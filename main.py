@@ -27,74 +27,48 @@ async def on_message(message):
     #    return
 
     # ずるいぞって誰かが言ったら　〇
-    if message.content.startswith('ずるいぞ！'):
+    if message.content.startswith('ずるいぞ！') or message.content.endswith('ずるいぞ！'):
     # 藍染がずるいぞって言います
         await message.channel.send('https://pbs.twimg.com/media/DkZfWzGU0AAtVQt.jpg')
-    elif message.content.endswith('ずるいぞ！'):
-        await message.channel.send('https://pbs.twimg.com/media/DkZfWzGU0AAtVQt.jpg')
-
+    
     # ねないこって誰かが言ったら  〇
     if message.content.startswith('ねないこ'):
     # ねないこだれだ　が出てきます        
         await message.channel.send('https://images-na.ssl-images-amazon.com/images/I/81Yp7djAE+L.jpg')
 
     # ライナーに助けを求めたら　〇
-    if message.content.startswith('ライナアアア'):
+    if message.content.startswith('ライナアアア') or message.content.endswith('アアアアアア'):
     # ライナーは静かにして欲しいといいます
         await message.channel.send('https://pbs.twimg.com/media/DqzBEMbU8AAzjbR.jpg')
-    # なんか適当にアアアって叫んでてもライナーは反応してくれます   
-    elif message.content.endswith('アアアアアア'):
-        await message.channel.send('https://pbs.twimg.com/media/DqzBEMbU8AAzjbR.jpg')
-
+    
     # いーじゃんって言ったら
-    if message.content.startswith('いーじゃん'):
+    if message.content.startswith('いーじゃん') or message.content.startswith('イージャン'):
     # ラージャンがイージャンって言ってくれます
         await message.channel.send('https://pbs.twimg.com/media/EKljb9QWsAEePP2.jpg')
-    elif message.content.endswith('いーじゃん'):
-        await message.channel.send('https://pbs.twimg.com/media/EKljb9QWsAEePP2.jpg')
-
-    # イージャン って言っても 〇
-    if message.content.startswith('イージャン'):
-    # ラージャンがイージャンって言ってくれます
-        await message.channel.send('https://pbs.twimg.com/media/EKljb9QWsAEePP2.jpg')
-    elif message.content.endswith('イージャン'):
+    elif message.content.endswith('いーじゃん') or  message.content.endswith('イージャン'):
         await message.channel.send('https://pbs.twimg.com/media/EKljb9QWsAEePP2.jpg')
 
     # すげーじゃんって言ったら
-    if message.content.startswith('すげーじゃん'):
+    if message.content.startswith('すげーじゃん') or message.content.startswith('スゲージャン'):
     # ラージャンがスゲージャンって言ってくれます
         await message.channel.send('https://pbs.twimg.com/media/Eo-I_NdVQAE6ZMR.jpg')
-    elif message.content.endswith('すげーじゃん'):
-        await message.channel.send('https://pbs.twimg.com/media/Eo-I_NdVQAE6ZMR.jpg')
-
-    # スゲージャンって言っても　〇
-    if message.content.startswith('スゲージャン'):
-    # ラージャンがスゲージャンって言ってくれます
-        await message.channel.send('https://pbs.twimg.com/media/Eo-I_NdVQAE6ZMR.jpg')
-    elif message.content.endswith('スゲージャン'):
+    elif message.content.endswith('すげーじゃん') or message.content.endswith('スゲージャン'):
         await message.channel.send('https://pbs.twimg.com/media/Eo-I_NdVQAE6ZMR.jpg')
 
     # 誰かがあげません！って言ったら　〇
-    if message.content.startswith('あげません！'):
+    if message.content.startswith('あげません！') or message.content.endswith('あげません！'):
     # スぺちゃんがあげません！って言ってくれます
-        await message.channel.send('https://img.cdn.nimg.jp/s/nicovideo/thumbnails/38460226/38460226.3466182.original/r1280x720l?key=17bf7d9be542944a7bf81eb51f7a5cd5225b4e4c78ed1de3efee305a3ff57f04')
-    elif message.content.endswith('あげません！'):
         await message.channel.send('https://img.cdn.nimg.jp/s/nicovideo/thumbnails/38460226/38460226.3466182.original/r1280x720l?key=17bf7d9be542944a7bf81eb51f7a5cd5225b4e4c78ed1de3efee305a3ff57f04')
 
     # くれよって言っても 〇
-    if message.content.startswith('くれよ'):
+    if message.content.startswith('くれよ') or message.content.endswith('くれよ'):
     # スぺちゃんはくれません
-        await message.channel.send('https://img.cdn.nimg.jp/s/nicovideo/thumbnails/38460226/38460226.3466182.original/r1280x720l?key=17bf7d9be542944a7bf81eb51f7a5cd5225b4e4c78ed1de3efee305a3ff57f04')
-    elif message.content.endswith('くれよ'):
         await message.channel.send('https://img.cdn.nimg.jp/s/nicovideo/thumbnails/38460226/38460226.3466182.original/r1280x720l?key=17bf7d9be542944a7bf81eb51f7a5cd5225b4e4c78ed1de3efee305a3ff57f04')
 
     # ハルトオオオオオオオオオオオオオ　〇
     if 'ハルトオオオ' in message.content:
     # ハルトオオオオオオオオオオオオオ
         await message.channel.send('https://cdn.discordapp.com/attachments/796357249743585290/841019229548707840/R6ac126fab28a92ff5b4ab89942728b15_1.png')
-    # テスト気味にいれてみる(結果は成功でした。これから色々弄る)
-    # elif message.content.endswith('オオオオオオ'):
-        # await message.channel.send('https://cdn.discordapp.com/attachments/796357249743585290/841019229548707840/R6ac126fab28a92ff5b4ab89942728b15_1.png')
 
     # 兄さんは嫌いだって言っちゃうと 〇
     if '兄さんは嫌いだ' in message.content:
@@ -102,59 +76,42 @@ async def on_message(message):
         await message.channel.send('https://cdn.discordapp.com/attachments/796357249743585290/841052385731936276/afbf996c5911d45b.png')
 
     # いいぞ。って言うと　〇
-    if message.content.startswith('いいぞ。'):
+    if message.content.startswith('いいぞ。') or message.content.endswith('いいぞ。'):
     # ジャンボ尾崎のワンポイントアドバイスが出ます
         await message.channel.send('http://nicovideo.cdn.nimg.jp/thumbnails/30324655/30324655.L')
-    elif message.content.endswith('いいぞ。'):
-        await message.channel.send('http://nicovideo.cdn.nimg.jp/thumbnails/30324655/30324655.L')
 
-   
     # よよよって言うと 〇
-    if message.content.startswith('よよよ'):
+    if message.content.startswith('よよよ') or message.content.endswith('よよよ'):
     # マックイーンも落ち込みます
         await message.channel.send('https://cdn.discordapp.com/attachments/796782540895682603/844895684636442674/WS000200.JPG')
-    elif message.content.endswith('よよよ'):
-        await message.channel.send('https://cdn.discordapp.com/attachments/796782540895682603/844895684636442674/WS000200.JPG')
-
+    
     # 勝ちですわって言っちゃうと　〇
-    if '勝ちですわ' in message.content:
+    if '勝ちですわ' in message.content or '勝ちですわ！' in message.content:
     # マックイーンも勝利しちゃいます
         await message.channel.send('https://livedoor.blogimg.jp/risufx-q61dxwp6/imgs/f/9/f9c4c21a.png')
-    elif '勝ちですわ！' in message.content:
+    
+    elif 'チョコが一番ですわ' in message.content or 'チョコが一番ですわ！' in message.content:
         await message.channel.send('https://livedoor.blogimg.jp/risufx-q61dxwp6/imgs/f/9/f9c4c21a.png')
-    elif 'チョコが一番ですわ' in message.content:
+    
+    elif 'チョコですわ' in message.content or 'チョコですわ！' in message.content:
         await message.channel.send('https://livedoor.blogimg.jp/risufx-q61dxwp6/imgs/f/9/f9c4c21a.png')
-    elif 'チョコが一番ですわ！' in message.content:
-        await message.channel.send('https://livedoor.blogimg.jp/risufx-q61dxwp6/imgs/f/9/f9c4c21a.png')
-    elif 'チョコですわ' in message.content:
-        await message.channel.send('https://livedoor.blogimg.jp/risufx-q61dxwp6/imgs/f/9/f9c4c21a.png')
-    elif 'チョコですわ！' in message.content:
-        await message.channel.send('https://livedoor.blogimg.jp/risufx-q61dxwp6/imgs/f/9/f9c4c21a.png')
+    
 
     # パクパクですわって言っちゃうと 〇
-    if 'パクパクですわ' in message.content:
+    if 'パクパクですわ' in message.content or 'パクパクですわ！' in message.content:
     # マックイーンもパクパクします
         await message.channel.send('https://imgur.com/B1qQVAJ')
-    elif 'パクパクですわ！' in message.content:
-        await message.channel.send('https://imgur.com/B1qQVAJ')
+   
     
 
     # 毎夜コレですわって言っちゃうと
-    if '毎夜コレですわ！' in message.content:
+    if '毎夜コレですわ！' in message.content or '毎夜これですわ！' in message.content:
     # マックイーンも便乗してきます
-        await message.channel.send('https://imgur.com/9b7h58h')
-    elif '毎夜コレですわ！！' in message.content:
-        await message.channel.send('https://imgur.com/9b7h58h')
-    elif '毎夜これですわ！' in message.content:
-        await message.channel.send('https://imgur.com/9b7h58h')
-    elif '毎夜これですわ！！' in message.content:
         await message.channel.send('https://imgur.com/9b7h58h')
 
     # 人に対して殺意を向けると 〇
-    if 'お前を殺す' in message.content:
+    if 'お前を殺す' in message.content or 'お前を頃す' in message.content:
     # ヒイロ・ユイがやってきます
-        await message.channel.send('https://img.gifmagazine.net/gifmagazine/images/4404342/original.gif')
-    elif 'お前を頃す' in message.content:
         await message.channel.send('https://img.gifmagazine.net/gifmagazine/images/4404342/original.gif')
 
 # サボテンをサンドでサンドすると
