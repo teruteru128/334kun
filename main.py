@@ -1,3 +1,4 @@
+import os
 import discord
 from discord.ext import tasks
 from datetime import datetime , timedelta, timezone
@@ -5,7 +6,7 @@ from time import sleep
 import numpy as np
 from numpy import random
 
-TOKEN = '各々で' #トークン
+TOKEN = os.environ['ここは各々'] #トークン
 CHANNEL_ID =  796357249743585290#チャンネルID
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
