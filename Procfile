@@ -1,1 +1,1 @@
-bot: python its334bot.py
+bot: python main.py
