@@ -183,9 +183,10 @@ async def on_message(message):
             UNKO = ':regional_indicator_u: :regional_indicator_n: :regional_indicator_k: :regional_indicator_o:'
             MANKO = ':regional_indicator_m: :regional_indicator_a: :regional_indicator_n: :regional_indicator_k: :regional_indicator_o:'
             OMANCO = ':regional_indicator_o: :regional_indicator_m: :regional_indicator_a: :regional_indicator_n: :regional_indicator_c: :regional_indicator_o:'
+            OPPAI = ':regional_indicator_o: :regional_indicator_p: :regional_indicator_p: :regional_indicator_a: :regional_indicator_i: '
             # サイコロの面を指定
-            dice_list = [':one:',':two:',':three:',':four:',':five:',':six:',OCHINCHIN,CHINKO,UNCHI,UNKO,MANKO,OMANCO]
-            p = np.array([0.15,0.15,0.15,0.15,0.15,0.15,0.01,0.018,0.018,0.018,0.018,0.018])
+            dice_list = [':one:',':two:',':three:',':four:',':five:',':six:',OCHINCHIN,CHINKO,UNCHI,UNKO,MANKO,OMANCO,OPPAI]
+            p = np.array([0.15,0.15,0.15,0.15,0.15,0.15,0.01,0.015,0.015,0.015,0.015,0.015,0.015])
             p = p / sum(p) # サイコロの確率の総和を1に近づける（はず）
             m = 'サイコロを振ります…'
             dice_roll = np.random.choice(dice_list,p=p) # サイコロを振ります
