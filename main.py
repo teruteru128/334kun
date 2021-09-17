@@ -30,7 +30,13 @@ async def on_message(message):
     # ずるいぞって誰かが言ったら　〇
     if message.content.startswith('ずるいぞ！') or message.content.endswith('ずるいぞ！'):
     # 藍染がずるいぞって言います
-        await message.channel.send('https://pbs.twimg.com/media/DkZfWzGU0AAtVQt.jpg')
+    #    await message.channel.send('https://pbs.twimg.com/media/DkZfWzGU0AAtVQt.jpg')
+    # 藍染以外にもずるいぞって言わせるようにしました    
+        zuruizo_list = ['https://pbs.twimg.com/media/DkZfWzGU0AAtVQt.jpg', 'https://pbs.twimg.com/media/DJLmJjJVAAElBjF.jpg']
+        p = np.array([85,15])
+        p = p / sum(p)
+        await message.channel.send(np.random.choice((zuruizo_list),p=p))
+    
     
     # ねないこって誰かが言ったら  〇
     if message.content.startswith('ねないこ'):
