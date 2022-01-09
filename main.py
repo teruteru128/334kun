@@ -4,14 +4,13 @@ from discord.ext import tasks, commands
 from datetime import datetime, timedelta, timezone
 from time import sleep
 import numpy as np
-from numpy import random
 
 TOKEN = os.environ['ここは各々']  # トークン
 CHANNEL_ID = 796357249743585290  # チャンネルID
 # 接続に必要なオブジェクトを生成
 bot = commands.Bot(command_prefix='#')
 
-jst = timezone(timedelta(hours=9), name='JAPAN')
+JST = timezone(timedelta(hours=9), name='JAPAN')
 
 
 @bot.event
@@ -135,37 +134,6 @@ async def on_message(message):
 
 # 真面目な系統はここに入れる（技術的なテスト込み）
 
-    # 無期限招待URLの発効コマンド
-    embed1 = discord.Embed(title="https://discord.gg/AbU5vwBsHG",
-                           description="無期限の招待URLです", color=0x24adff)
-    embed1.set_author(name="多目的トイレ", url="https://discord.gg/AbU5vwBsHG",
-                      icon_url="https://cdn.discordapp.com/attachments/796425344278069328/798959598005780500/A5zT8yyCQAAzURO.jpg")
-    if message.content == '#inv':
-        # await message.channel.send('招待URLはこちらです。''\n''https://discord.gg/AbU5vwBsHG')
-        await message.channel.send(embed=embed1)
-
-    # Discordの標準チャットコマンド一覧を出すコマンド
-    embed2 = discord.Embed(title="Discordチャットコマンド", color=0x24abff)
-    embed2.add_field(name="太字", value='`** **で囲む`', inline=True)
-    embed2.add_field(name="下線", value='`__ __で囲む`', inline=True)
-    embed2.add_field(name="取り消し線", value='`~~ ~~で囲む`', inline=True)
-    embed2.add_field(name="文字を隠す", value="`|| ||で囲む`", inline=True)
-    embed2.add_field(name="なんか線を出す", value="`> を左側に置く`", inline=True)
-    if message.content == '#tyc':
-        await message.channel.send(embed=embed2)
-
-    # botコマンドEmbed
-    embed3 = discord.Embed(
-        title="botコマンド一覧", description="It's 334のコマンド", color=0x12adff)
-    embed3.add_field(name="#inv", value="`無期限招待URLを発行`", inline=True)
-    embed3.add_field(name="#tyc", value="`ディスコのチャットコマンド一覧`", inline=True)
-    embed3.add_field(name="#dice", value="`サイコロが振れます`", inline=True)
-
-    if message.content == '#command':
-        await message.channel.send(embed=embed3)
-    elif message.content == '#help':
-        await message.channel.send(embed=embed3)
-
     # logcを全消しするコマンド（管理者のみ）
     cleanmessage = ('confirm clean up')
     warningmessge = ('このコマンドを使う権利がありません')
@@ -177,70 +145,75 @@ async def on_message(message):
         else:
             await message.channel.send(warningmessge)
 
-    # サイコロ振らせます
-    if '#dice' in message.content:
-        if bot.user != message.author:
-            # 乱数を作成
-            OCHINCHIN = ':regional_indicator_o: :regional_indicator_c: :regional_indicator_h: :regional_indicator_i: :regional_indicator_n: :regional_indicator_c: :regional_indicator_h: :regional_indicator_i: :regional_indicator_n:'
-            CHINKO = ':regional_indicator_c: :regional_indicator_h: :regional_indicator_i: :regional_indicator_n: :regional_indicator_k: :regional_indicator_o:'
-            UNCHI = ':regional_indicator_u: :regional_indicator_n: :regional_indicator_c: :regional_indicator_h: :regional_indicator_i:'
-            UNKO = ':regional_indicator_u: :regional_indicator_n: :regional_indicator_k: :regional_indicator_o:'
-            MANKO = ':regional_indicator_m: :regional_indicator_a: :regional_indicator_n: :regional_indicator_k: :regional_indicator_o:'
-            OMANCO = ':regional_indicator_o: :regional_indicator_m: :regional_indicator_a: :regional_indicator_n: :regional_indicator_c: :regional_indicator_o:'
-            OPPAI = ':regional_indicator_o: :regional_indicator_p: :regional_indicator_p: :regional_indicator_a: :regional_indicator_i: '
-            # サイコロの面を指定
-            dice_list = [':one:', ':two:', ':three:', ':four:', ':five:',
-                         ':six:', OCHINCHIN, CHINKO, UNCHI, UNKO, MANKO, OMANCO, OPPAI]
-            p = np.array([0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.01,
-                         0.015, 0.015, 0.015, 0.015, 0.015, 0.015])
-            p = p / sum(p)  # サイコロの確率の総和を1に近づける（はず）
-            m = 'サイコロを振ります…'
-            dice_roll = np.random.choice(dice_list, p=p)  # サイコロを振ります
-            await message.reply(m)  # dice コマンドの発信者に対して返信を行う
-            sleep(1)  # 1秒待たせる
-            await message.reply(dice_roll)  # dice コマンドの発信者に対して、サイコロの結果を返信する
+OCHINCHIN = ':regional_indicator_o: :regional_indicator_c: :regional_indicator_h: :regional_indicator_i: :regional_indicator_n: :regional_indicator_c: :regional_indicator_h: :regional_indicator_i: :regional_indicator_n:'
+CHINKO = ':regional_indicator_c: :regional_indicator_h: :regional_indicator_i: :regional_indicator_n: :regional_indicator_k: :regional_indicator_o:'
+UNCHI = ':regional_indicator_u: :regional_indicator_n: :regional_indicator_c: :regional_indicator_h: :regional_indicator_i:'
+UNKO = ':regional_indicator_u: :regional_indicator_n: :regional_indicator_k: :regional_indicator_o:'
+MANKO = ':regional_indicator_m: :regional_indicator_a: :regional_indicator_n: :regional_indicator_k: :regional_indicator_o:'
+OMANCO = ':regional_indicator_o: :regional_indicator_m: :regional_indicator_a: :regional_indicator_n: :regional_indicator_c: :regional_indicator_o:'
+OPPAI = ':regional_indicator_o: :regional_indicator_p: :regional_indicator_p: :regional_indicator_a: :regional_indicator_i: '
+# サイコロの面を指定
+DICE_LIST = [':one:', ':two:', ':three:', ':four:', ':five:',
+             ':six:', OCHINCHIN, CHINKO, UNCHI, UNKO, MANKO, OMANCO, OPPAI]
+
+
+@bot.command()
+async def dice(ctx: commands.Context):
+    if bot.user != ctx.author:
+        # 乱数を作成
+        p = np.array([0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.01,
+                      0.015, 0.015, 0.015, 0.015, 0.015, 0.015])
+        p = p / sum(p)  # サイコロの確率の総和を1に近づける（はず）
+        m = 'サイコロを振ります…'
+        dice_roll = np.random.choice(DICE_LIST, p=p)  # サイコロを振ります
+        await ctx.reply(m)  # dice コマンドの発信者に対して返信を行う
+        sleep(1)  # 1秒待たせる
+        await ctx.reply(dice_roll)  # dice コマンドの発信者に対して、サイコロの結果を返信する
+
+
+EMBED1 = discord.Embed(title="https://discord.gg/AbU5vwBsHG",
+                       description="無期限の招待URLです", color=0x24adff)
+EMBED1.set_author(name="多目的トイレ", url="https://discord.gg/AbU5vwBsHG",
+                  icon_url="https://cdn.discordapp.com/attachments/796425344278069328/798959598005780500/A5zT8yyCQAAzURO.jpg")
 
 
 @bot.command()
 async def inv(ctx: commands.Context):
     """無期限招待URLの発効コマンド"""
-    embed1 = discord.Embed(title="https://discord.gg/AbU5vwBsHG",
-                           description="無期限の招待URLです", color=0x24adff)
-    embed1.set_author(name="多目的トイレ", url="https://discord.gg/AbU5vwBsHG",
-                      icon_url="https://cdn.discordapp.com/attachments/796425344278069328/798959598005780500/A5zT8yyCQAAzURO.jpg")
-    await ctx.message.channel.send(embed=embed1)
+    await ctx.message.channel.send(embed=EMBED1)
+
+EMBED2 = discord.Embed(title="Discordチャットコマンド", color=0x24abff)
+EMBED2.add_field(name="太字", value='`** **で囲む`', inline=True)
+EMBED2.add_field(name="下線", value='`__ __で囲む`', inline=True)
+EMBED2.add_field(name="取り消し線", value='`~~ ~~で囲む`', inline=True)
+EMBED2.add_field(name="文字を隠す", value="`|| ||で囲む`", inline=True)
+EMBED2.add_field(name="なんか線を出す", value="`> を左側に置く`", inline=True)
 
 
 @bot.command()
 async def tyc(ctx: commands.Context):
     """Discordの標準チャットコマンド一覧を出すコマンド"""
-    embed2 = discord.Embed(title="Discordチャットコマンド", color=0x24abff)
-    embed2.add_field(name="太字", value='`** **で囲む`', inline=True)
-    embed2.add_field(name="下線", value='`__ __で囲む`', inline=True)
-    embed2.add_field(name="取り消し線", value='`~~ ~~で囲む`', inline=True)
-    embed2.add_field(name="文字を隠す", value="`|| ||で囲む`", inline=True)
-    embed2.add_field(name="なんか線を出す", value="`> を左側に置く`", inline=True)
-    await ctx.message.channel.send(embed=embed2)
+    await ctx.message.channel.send(embed=EMBED2)
+
+EMBED3 = discord.Embed(
+    title="botコマンド一覧", description="It's 334のコマンド", color=0x12adff)
+EMBED3.add_field(name="#inv", value="`無期限招待URLを発行`", inline=True)
+EMBED3.add_field(name="#tyc", value="`ディスコのチャットコマンド一覧`", inline=True)
+EMBED3.add_field(name="#dice", value="`サイコロが振れます`", inline=True)
 
 
 @bot.command(aliases=['help'])
 async def command(ctx: commands.Context):
-    embed3 = discord.Embed(
-        title="botコマンド一覧", description="It's 334のコマンド", color=0x12adff)
-    embed3.add_field(name="#inv", value="`無期限招待URLを発行`", inline=True)
-    embed3.add_field(name="#tyc", value="`ディスコのチャットコマンド一覧`", inline=True)
-    embed3.add_field(name="#dice", value="`サイコロが振れます`", inline=True)
-    await ctx.message.channel.send(embed=embed3)
-
-# ここ ↓ は時間指定で送る系統
-
-# 60秒に一回ループ
+    await ctx.message.channel.send(embed=EMBED3)
 
 
 @tasks.loop(seconds=60)
 async def loop():
+    """ここ ↓ は時間指定で送る系統
+
+    60秒に一回ループ"""
     # 現在の時刻
-    now = datetime.now(jst).strftime('%H:%M')
+    now = datetime.now(JST).strftime('%H:%M')
     if now == '03:34':
         channel = bot.get_channel(CHANNEL_ID)
         await channel.send('3時34分をお知らせします。')
